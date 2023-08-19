@@ -1,14 +1,16 @@
 import "./Main.css";
+import PolicyAgreement from "../Modal-policy-agreement/Modal-policy-agreement";
 
 
 const Main = () => {
     return (
         <main className="main">
-            <section className="modal__buttons">
-                <button className="modal__button">Policy</button>
-                <button className="modal__button">Agree</button>
+           <PolicyAgreement/>
+            <section className="employee__agreement-display">
+                <ul className="employee__agreement-display__chart">
+                    
+                </ul>
             </section>
-            <section className="employee__agreement-display"></section>
         </main>
     )
 }

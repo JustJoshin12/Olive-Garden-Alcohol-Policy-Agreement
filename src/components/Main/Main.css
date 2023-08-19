@@ -8,44 +8,4 @@
   width: 100%;
 }
 
-.modal__buttons {
-    padding-top: 60px;
-    display: flex;
-    justify-content: space-evenly;
-}
 
-.modal__button {
-  width: 125px;
-  height: 53px;
-  border-radius: 3px;
-  background-color: #a89e24;
-  box-shadow: rgba(23, 90, 32, 0.63) 0 2px 4px 0;
-  box-sizing: border-box;
-  color: #fff;
-  border: 1px solid #a89e24;
-  cursor: pointer;
-  font-family: "SourceSerif";
-  font-size: 24px;
-  outline: none;
-  outline: 0;
-  padding: 10px 25px;
-  text-align: center;
-  transform: translateY(0);
-  transition: transform 150ms, box-shadow 150ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.modal__button:hover {
-    box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
-    transform: translateY(-2px);
-}
-
-
-
-@media (min-width: 768px) {
-  .modal__button {
-    padding: 10px 30px;
-  }
-}
