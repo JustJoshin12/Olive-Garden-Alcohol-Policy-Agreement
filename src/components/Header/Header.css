@@ -1,0 +1,40 @@
+@font-face {
+    font-family: "SourceSerif";
+    src: url("../../fonts/SourceSerif4_36pt-ExtraBold.ttf") format("woff");
+}
+
+.header {
+    display: grid;
+    grid-template-areas: 
+    "logo date"
+    "title title";
+    grid-template-columns: repeat(2, 1fr)
+}
+
+.header__logo {
+    max-width: 300px;
+    max-height: 140px;
+    grid-area: logo;
+}
+
+.header__title {
+    color: white;
+    font-family: "SourceSerif";
+    font-size: 48px;
+    margin: 0;
+    grid-area: title;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.header__date {
+    color: white;
+    font-family: "SourceSerif";
+    font-size: 30px;
+    margin: 0;
+    position: relative;
+    grid-area: date;
+    text-align: right;
+    margin-top: 20px;
+    margin-right: 40px;
+}
