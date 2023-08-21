@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "SourceSerif";
+    src: url("../../fonts/SourceSerif4_36pt-ExtraBold.ttf") format("woff");
+  }
+
+  .modal__input-title {
+    font-size: 24px;
+    font-family: "SourceSerif";
+    line-height: 1.2;
+  }
