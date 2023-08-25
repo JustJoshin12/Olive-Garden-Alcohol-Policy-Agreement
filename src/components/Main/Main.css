@@ -6,59 +6,6 @@
 .main {
   height: 100%;
   width: 100%;
+  padding-bottom: 70px;
 }
 
-.employee__agreement-display{
-    margin: 0 auto;
-    margin-top: 25px;
-    max-width: 1100px;
-    
-}
-
-.employee__agreement-display__chart {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    background-color: #fff;
-    border: 5px solid black;
-}
-
-.column {
-    padding-top: 10px;
-    flex: 50%;
-    border: 3px solid black;
-  }
-
-.column__label {
-    font-family: "SourceSerif";
-    font-size: 28px;
-    color: black;
-    margin: 0;
-    text-align: center;
-    border-bottom: 4px solid black;
-    padding-bottom: 10px;
-}
-
-.column__employee-name {
-    font-family: "SourceSerif";
-    font-size: 30px;
-    margin: 0;
-    border-bottom: 3px solid black;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.column__employee-signature {
-    max-height: 100px;
-    width: 100%;
-    border-bottom: 3px solid black;
-}
-.column__employee-signature-image {
-    max-height: 100px;
-    width: 80%;
-    padding-left: 50px;
-   
-    
-}

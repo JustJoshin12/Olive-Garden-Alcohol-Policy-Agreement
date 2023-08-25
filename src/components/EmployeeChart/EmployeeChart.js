@@ -7,7 +7,7 @@ const EmployeeChart = () => {
         <div className="employee__agreement-display__chart">
           <div className="column">
             <h2 className="column__label">Name</h2>
-            <p className="text-emerald-500 text-lg">Joshua Smith</p>
+            <p className="column__employee-name">Joshua Smith</p>
             <p className="column__employee-name">Joshua Smith</p>
             <p className="column__employee-name">Joshua Smith</p>
             <p className="column__employee-name">Joshua Smith</p>

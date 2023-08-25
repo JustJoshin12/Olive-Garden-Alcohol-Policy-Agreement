@@ -1,5 +1,6 @@
-import "./Header.css"
-import logo from "../../images/logo.png"
+import "./Header.css";
+import logo from "../../images/logo.png";
+
 
 const Header = ({shiftTime}) => {
     const currentDate = new Date().toLocaleString("default", {

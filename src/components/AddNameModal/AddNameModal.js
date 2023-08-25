@@ -6,9 +6,9 @@ const AddNameModal = () => {
     return (
         <div className="modal__form-contents">
             <label>
-                <p className="modal__input-title">Name</p>
+                <p className=" text-2xl font-['SourceSerif']">Name</p>
                 <input
-                className="modal__input"
+                className="border-black w-full"
                 type="text"
                 name="name"
                 minLength="8"

@@ -35,7 +35,7 @@ const SignatureCapture = () => {
       <SignatureCanvas
         ref={sigCanvasRef}
         penColor='black'
-        canvasProps={{ width: 500, height: 200, className: 'signature-canvas', style: {border: '2px solid black'}}}
+        canvasProps={{ width: 493, height: 200, className: 'signature-canvas', style: {border: '2px solid black'}}}
       />
       <div>
         <button onClick={handleClear}>Clear Signature</button>

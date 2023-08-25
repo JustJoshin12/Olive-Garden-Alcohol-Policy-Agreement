@@ -8,33 +8,45 @@
     grid-template-areas: 
     "logo date"
     "title title";
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: repeat(2, 1fr);
+    background-image: url("../../images/drinks.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-bottom: 30px;
+    border: 4px solid black;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .header__logo {
-    max-width: 300px;
-    max-height: 140px;
+    width: 420px;
+    max-height: 180px;
     grid-area: logo;
+    margin-left: 10px;
+    
 }
 
 .header__title {
     color: white;
     font-family: "SourceSerif";
-    font-size: 48px;
+    font-size: 54px;
     margin: 0;
     grid-area: title;
     text-align: center;
     margin-top: 15px;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+    
 }
 
 .header__date {
     color: white;
     font-family: "SourceSerif";
-    font-size: 30px;
+    font-size: 38px;
     margin: 0;
     position: relative;
     grid-area: date;
     text-align: right;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-right: 40px;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
 }
