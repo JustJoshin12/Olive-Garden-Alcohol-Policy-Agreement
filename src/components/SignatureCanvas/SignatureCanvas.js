@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import SignatureCanvas from 'react-signature-canvas';
-import axios from 'axios';
-import './SignatureCanvas.css'
+import React, { useState } from "react";
+import SignatureCanvas from "react-signature-canvas";
+import axios from "axios";
+import "./SignatureCanvas.css";
 
 const SignatureCapture = () => {
   const [signatureImage, setSignatureImage] = useState(null);
@@ -22,24 +22,34 @@ const SignatureCapture = () => {
 
   const saveSignature = async (imageData) => {
     try {
-      const response = await axios.post('/api/saveSignature', { image: imageData });
+      const response = await axios.post("/api/saveSignature", {
+        image: imageData,
+      });
       console.log(response.data);
     } catch (error) {
-      console.error('Error saving signature', error);
+      console.error("Error saving signature", error);
     }
   };
 
   return (
-    <div>
-      <p className='modal__input-title'>Signature</p>
+    <div className="mt-[20px]">
+      <p className="modal__input-title mb-[15px]">Signature</p>
       <SignatureCanvas
         ref={sigCanvasRef}
-        penColor='black'
-        canvasProps={{ width: 493, height: 200, className: 'signature-canvas', style: {border: '2px solid black'}}}
+        penColor="black"
+        canvasProps={{
+          maxwidth: 564,
+          height: 200,
+          className: "signature-canvas",
+          style: { 
+            border: "2px solid black",
+            width: "100%",
+          },
+        }}
       />
+      <span></span>
       <div>
         <button onClick={handleClear}>Clear Signature</button>
-        <button onClick={handleSave}>Save Signature</button>
       </div>
       {signatureImage && <img src={signatureImage} alt="Saved Signature" />}
     </div>

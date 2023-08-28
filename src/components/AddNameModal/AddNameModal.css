@@ -1,10 +1,29 @@
 @font-face {
-    font-family: "SourceSerif";
-    src: url("../../fonts/SourceSerif4_36pt-ExtraBold.ttf") format("woff");
-  }
+  font-family: "SourceSerif";
+  src: url("../../fonts/SourceSerif4_36pt-ExtraBold.ttf") format("woff");
+}
 
-  .modal__input-title {
-    font-size: 24px;
-    font-family: "SourceSerif";
-    line-height: 1.2;
-  }
+.modal__input-title {
+  font-size: 24px;
+  font-family: "SourceSerif";
+  line-height: 1.2;
+}
+
+.modal__error {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ff0000;
+  visibility: hidden;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.modal__input__error_visible {
+  visibility: visible;
+}
+
+.modal__input_type_error {
+  border-bottom: 1px solid #FF0000;
+}

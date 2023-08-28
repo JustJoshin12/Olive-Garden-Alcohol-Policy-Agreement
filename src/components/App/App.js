@@ -34,7 +34,7 @@ function App() {
       <Header shiftTime={shiftTime}/>
       <Main onAgreement={handleAgreementModal}/>
       {activeModal === "agreement" && (
-        <ModalWithForm onClose={handleCloseModal}>
+        <ModalWithForm onClose={handleCloseModal} name="add-name" title="Policy Agreement Signature">
          <AddNameModal/>
         </ModalWithForm>
       )}
