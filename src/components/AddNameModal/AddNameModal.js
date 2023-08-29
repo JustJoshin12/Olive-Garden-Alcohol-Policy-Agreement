@@ -9,7 +9,7 @@ const AddNameModal = () => {
           Name
         </p>
         <input
-          className="border-black border-2 border-solid w-full rounded"
+          className="border-black border-2 border-solid w-full rounded p-[5px]"
           type="text"
           name="name"
           minLength="8"
