@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+  margin-bottom: 30px;
   background-color: #fff;
   border: 4px solid black;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
@@ -45,12 +46,24 @@
 }
 
 .column__employee-signature {
-  max-height: 100px;
+  height: 100px;
   width: 100%;
+  padding: 10px;
   border-bottom: 3px solid black;
 }
-.column__employee-signature-image {
-  max-height: 100px;
-  width: 80%;
-  padding-left: 50px;
+
+
+@media  screen and (max-width: 480px){
+  .column__label {
+    font-size: 22px;
+    padding: 0;
+  }
+  .column__employee-name {
+    font-size: 16px;
+  }
+
+  .column__employee-signature {
+    padding: 5px
+  }
+  
 }

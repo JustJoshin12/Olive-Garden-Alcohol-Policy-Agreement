@@ -9,3 +9,8 @@
   padding-bottom: 70px;
 }
 
+@media screen and (max-width: 480px) {
+  .main  div {
+    margin-right: 0;
+  }
+}

@@ -41,16 +41,18 @@ const SignatureCapture = () => {
           maxwidth: 564,
           height: 200,
           className: "signature-canvas",
-          style: { 
+          style: {
             border: "2px solid black",
             width: "100%",
           },
         }}
       />
       <span></span>
-      <div>
-        <button className="signature__clear-button" onClick={handleClear}>Clear Signature</button>
-      </div>
+
+      <button className="signature__clear-button" onClick={handleClear}>
+        Clear Signature
+      </button>
+
       {signatureImage && <img src={signatureImage} alt="Saved Signature" />}
     </div>
   );

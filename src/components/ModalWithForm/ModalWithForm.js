@@ -22,8 +22,7 @@ const ModalWithForm = ({
           {children}
           <div className="flex justify-end">
             <button type="submit" className="modal__submit-button">
-              {" "}
-              {buttonText}{" "}
+              {buttonText}
             </button>
           </div>
         </form>

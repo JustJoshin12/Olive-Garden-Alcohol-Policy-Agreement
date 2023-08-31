@@ -5,35 +5,35 @@ import signature from "../images/signature.png"
  const employees = [
     {
         name:"Joshua Smith",
-        image:signature
+        signature:signature
     },
     {
-        name:"Joshua Smith",
-        image:signature
+        name:"Domingo Martinez",
+        signature:signature
     },
     {
-        name:"Joshua Smith",
-        image:signature
+        name:"Jacob Saiger",
+        signature:signature
     },
     {
-        name:"Joshua Smith",
-        image:signature
+        name:"Damien Vaquez",
+        signature:signature
     },
     {
-        name:"Joshua Smith",
-        image:signature
+        name:"Joey White",
+        signature:signature
     },
     {
-        name:"Joshua Smith",
-        image:signature
+        name:"Vince Him",
+        signature:signature
     },
     {
-        name:"Joshua Smith",
-        image:signature
+        name:"Danny Markque",
+        signature:signature
     },
     {
-        name:"Joshua Smith",
-        image:signature
+        name:"Jason Vorhees",
+        signature:signature
     },
 
 ]

@@ -1,67 +1,31 @@
 import "./EmployeeChart.css";
-import signature from "../../images/signature.png";
+import employees from "../../utils/const";
 
 const EmployeeChart = () => {
-    return (
-        <section className="employee__agreement-display">
-        <div className="employee__agreement-display__chart">
-          <div className="column">
-            <h2 className="column__label">Name</h2>
-            <p className="column__employee-name">Joshua Smith</p>
-            <p className="column__employee-name">Joshua Smith</p>
-            <p className="column__employee-name">Joshua Smith</p>
-            <p className="column__employee-name">Joshua Smith</p>
-            <p className="column__employee-name">Joshua Smith</p>
-            <p className="column__employee-name">Joshua Smith</p>
-          </div>
-          <div className="column">
-            <div className="column__label">Signature</div>
-            <div className="column__employee-signature">
-            <img
-            className="column__employee-signature-image"
-              src={signature}
-              alt=" signature"
-            />
-            </div>
-            <div className="column__employee-signature">
-            <img
-            className="column__employee-signature-image"
-              src={signature}
-              alt=" signature"
-            />
-            </div>
-            <div className="column__employee-signature">
-            <img
-            className="column__employee-signature-image"
-              src={signature}
-              alt=" signature"
-            />
-            </div>
-            <div className="column__employee-signature">
-            <img
-            className="column__employee-signature-image"
-              src={signature}
-              alt=" signature"
-            />
-            </div>
-            <div className="column__employee-signature">
-            <img
-            className="column__employee-signature-image"
-              src={signature}
-              alt=" signature"
-            />
-            </div>
-            <div className="column__employee-signature">
-            <img
-            className="column__employee-signature-image"
-              src={signature}
-              alt=" signature"
-            />
-            </div>
-          </div>
+  return (
+    <section className="employee__agreement-display">
+      <div className="employee__agreement-display__chart">
+        <div className="column">
+          <h2 className="column__label">Name</h2>
+          {employees.map((employee) => {
+            return <p className="column__employee-name">{employee.name}</p>;
+          })}
         </div>
-      </section>
-    )
-}
+        <div className="column">
+          <div className="column__label">Signature</div>
+          {employees.map((employee) => {
+            return (
+              <img
+                className="column__employee-signature"
+                src={employee.signature}
+                alt="signature"
+              />
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default EmployeeChart;

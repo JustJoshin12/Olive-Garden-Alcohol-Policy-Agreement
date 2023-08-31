@@ -50,3 +50,19 @@
     margin-right: 40px;
     text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
 }
+
+@media screen and (max-width: 480px) {
+    .header__date {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .header__title {
+        font-size: 26px;
+        margin: 0;
+    }
+    .header__logo {
+        margin-left: 5px;
+    }
+}
