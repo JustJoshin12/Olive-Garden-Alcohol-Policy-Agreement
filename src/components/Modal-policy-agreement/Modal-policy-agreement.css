@@ -44,7 +44,7 @@
   }
 }
 
-@media  screen and (max-width: 480px) {
+@media  screen and (max-width: 560px) {
   .modal__buttons{
     padding-top: 30px;
 
@@ -52,5 +52,6 @@
    .modal__button{
     font-size: 19px;
     width: 100px;
+    padding: 10px 16px;
    }
 }

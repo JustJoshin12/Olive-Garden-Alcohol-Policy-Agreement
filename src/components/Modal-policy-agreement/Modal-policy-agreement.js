@@ -1,7 +1,6 @@
 import "./Modal-policy-agreement.css";
 
 const PolicyAgreement = ({ onAgreement, onPolicy, hasReadPolicy }) => {
-  console.log(onPolicy)
   return (
     <section className="modal__buttons">
       <button className="modal__button" onClick={onPolicy}>

@@ -7,6 +7,10 @@ import signature from "../images/signature.png"
         name:"Joshua Smith",
         signature:signature
     },
+    { 
+        name:"Jacob Smith",
+        signature:signature
+    },
     {
         name:"Domingo Martinez",
         signature:signature

@@ -27,3 +27,9 @@
 .modal__input_type_error {
   border-bottom: 1px solid #FF0000;
 }
+
+@media screen and (max-width: 560px) {
+  p {
+    font-size: 1.4rem;
+  }
+}

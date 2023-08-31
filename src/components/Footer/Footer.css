@@ -1,20 +1,7 @@
-@font-face {
-  font-family: "SourceSerif";
-  src: url("../../fonts/SourceSerif4_36pt-ExtraBold.ttf") format("woff");
-}
-
-.app {
-  background-color: #603b28;
-  height: 100%;
-  max-width: 80%;
-  margin: 0 auto;
-}
-
 .footer {
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
-  
 }
 
 .footer__text {
@@ -24,12 +11,9 @@
   text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000;
 }
 
-
 .footer__copyright {
   font-family: "SourceSerif";
   font-size: 22px;
   color: #fff;
   text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000;
-  
-
 }

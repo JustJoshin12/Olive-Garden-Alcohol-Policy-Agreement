@@ -32,8 +32,8 @@ const SignatureCapture = () => {
   };
 
   return (
-    <div className="mt-[20px]">
-      <p className="modal__input-title mb-[15px]">Signature</p>
+    <div className="mt-[20px] mb-[20px]">
+      <p className={`modal__input-title mb-[15px]`}>Signature</p>
       <SignatureCanvas
         ref={sigCanvasRef}
         penColor="black"
@@ -48,11 +48,9 @@ const SignatureCapture = () => {
         }}
       />
       <span></span>
-
       <button className="signature__clear-button" onClick={handleClear}>
         Clear Signature
       </button>
-
       {signatureImage && <img src={signatureImage} alt="Saved Signature" />}
     </div>
   );

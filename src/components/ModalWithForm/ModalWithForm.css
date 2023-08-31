@@ -33,7 +33,6 @@
 
 .modal__submit-button {
   width: 100px;
-  height: 50px;
   border-radius: 8px;
   background-color: #a89e24;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
@@ -62,7 +61,9 @@
   transform: translateY(-2px);
 }
 
-@media screen and (max-width: 480px) {
+
+
+@media screen and (max-width: 560px) {
   .modal__content {
     padding: 12px;
   }
@@ -72,7 +73,7 @@
   }
 
   .modal h3 {
-    font-size: 32px;
+    font-size: 28px;
     padding-bottom: 10px;
   }
 
@@ -81,5 +82,17 @@
     height: 18px;
     top: 14px;
     right: 14px;
+  }
+
+  .modal__submit-button {
+   width: 75px;
+   padding: 6px 0;
+   font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 561px) and (max-width:690px){
+  .modal__content {
+    max-width: 500px;
   }
 }

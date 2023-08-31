@@ -7,8 +7,8 @@ const EmployeeChart = () => {
       <div className="employee__agreement-display__chart">
         <div className="column">
           <h2 className="column__label">Name</h2>
-          {employees.map((employee) => {
-            return <p className="column__employee-name">{employee.name}</p>;
+          {employees.map((employee,index) => {
+            return <p className="column__employee-name" key={index}>{employee.name}</p>;
           })}
         </div>
         <div className="column">

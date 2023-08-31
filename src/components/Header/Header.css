@@ -1,68 +1,110 @@
 @font-face {
-    font-family: "SourceSerif";
-    src: url("../../fonts/SourceSerif4_36pt-ExtraBold.ttf") format("woff");
+  font-family: "SourceSerif";
+  src: url("../../fonts/SourceSerif4_36pt-ExtraBold.ttf") format("woff");
 }
 
 .header {
-    display: grid;
-    grid-template-areas: 
+  margin-top: 20px;
+  display: grid;
+  grid-template-areas:
     "logo date"
     "title title";
-    grid-template-columns: repeat(2, 1fr);
-    background-image: url("../../images/drinks.webp");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding-bottom: 30px;
-    border: 4px solid black;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  grid-template-columns: repeat(2, 1fr);
+  background-image: url("../../images/drinks.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 30px;
+  border: 4px solid black;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .header__logo {
-    width: 420px;
-    max-height: 180px;
-    grid-area: logo;
-    margin-left: 10px;
-    
+  width: 420px;
+  max-height: 180px;
+  grid-area: logo;
+  margin-left: 10px;
 }
 
 .header__title {
-    color: white;
-    font-family: "SourceSerif";
-    font-size: 54px;
-    margin: 0;
-    grid-area: title;
-    text-align: center;
-    margin-top: 15px;
-    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
-    
+  color: white;
+  font-family: "SourceSerif";
+  font-size: 54px;
+  margin: 0;
+  grid-area: title;
+  text-align: center;
+  margin-top: 15px;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+    2px 2px 0 black;
 }
 
 .header__date {
-    color: white;
-    font-family: "SourceSerif";
-    font-size: 38px;
-    margin: 0;
-    position: relative;
-    grid-area: date;
-    text-align: right;
-    margin-top: 40px;
-    margin-right: 40px;
-    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+  color: white;
+  font-family: "SourceSerif";
+  font-size: 38px;
+  margin: 0;
+  position: relative;
+  grid-area: date;
+  text-align: right;
+  margin-top: 40px;
+  margin-right: 40px;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+    2px 2px 0 black;
 }
 
-@media screen and (max-width: 480px) {
-    .header__date {
-        font-size: 20px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
+@media screen and (max-width: 330px) {
+  .header__title {
+    font-size: 22px;
+  }
 
-    .header__title {
-        font-size: 26px;
-        margin: 0;
-    }
-    .header__logo {
-        margin-left: 5px;
-    }
+  .header__date {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .header__date {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
+
+  .header__title {
+    font-size: 26px;
+    margin: 0;
+  }
+  .header__logo {
+    margin-left: 5px;
+  }
+}
+
+@media screen and (min-width: 561px) and (max-width: 830px) {
+  .header__title {
+    font-size: 38px;
+  }
+
+  .header__date {
+    font-size: 26px;
+  }
+
+  .header__logo {
+    width: 280px;
+  }
+}
+
+@media screen and (min-width: 831px) and (max-width: 1200px) {
+  .header__title {
+    font-size: 44px;
+  }
+
+  .header__date {
+    font-size: 30px;
+  }
+
+  .header__logo {
+    width: 320px;
+  }
 }

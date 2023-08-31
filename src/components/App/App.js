@@ -5,6 +5,8 @@ import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import AddNameModal from "../AddNameModal/AddNameModal";
 import PolicyModal from "../PolicyModal/PolicyModal";
+import Footer from "../Footer/Footer";
+import { Route, Router } from "react-router-dom";
 
 function App() {
   const [shiftTime, setShiftTime] = useState("");
@@ -46,6 +48,8 @@ function App() {
     <div className="bg-[#603b28] h-full max-w-[80%] mx-auto">
       <Header shiftTime={shiftTime} />
       <Main onAgreement={handleAgreementModal} onPolicy={handlePolicyModal} hasReadPolicy={hasReadPolicy}/>
+      <Footer/>
+     
       {activeModal === "agreement" && (
         <ModalWithForm
           onClose={handleCloseModal}
