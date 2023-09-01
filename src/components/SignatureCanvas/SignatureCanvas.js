@@ -48,7 +48,7 @@ const SignatureCapture = () => {
         }}
       />
       <span></span>
-      <button className="signature__clear-button" onClick={handleClear}>
+      <button className="signature__clear-button" onClick={handleClear} type="button">
         Clear Signature
       </button>
       {signatureImage && <img src={signatureImage} alt="Saved Signature" />}
