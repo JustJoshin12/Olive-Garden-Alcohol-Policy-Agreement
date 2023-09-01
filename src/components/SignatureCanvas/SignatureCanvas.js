@@ -39,7 +39,7 @@ const SignatureCapture = () => {
         penColor="black"
         canvasProps={{
           maxwidth: 564,
-          height: 200,
+          height: "auto",
           className: "signature-canvas",
           style: {
             border: "2px solid black",
