@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Olive-Garden-Alcohol-Policy-Agreement/static/css/main.f7d0dd8b.css",
+    "main.js": "/Olive-Garden-Alcohol-Policy-Agreement/static/js/main.549dd21a.js",
+    "static/js/787.7d6cf84d.chunk.js": "/Olive-Garden-Alcohol-Policy-Agreement/static/js/787.7d6cf84d.chunk.js",
+    "static/media/SourceSerif4_36pt-ExtraBold.ttf": "/Olive-Garden-Alcohol-Policy-Agreement/static/media/SourceSerif4_36pt-ExtraBold.03a5bede5545b7309922.ttf",
+    "static/media/drinks.webp": "/Olive-Garden-Alcohol-Policy-Agreement/static/media/drinks.2c6473f0c0366485749e.webp",
+    "static/media/logo.png": "/Olive-Garden-Alcohol-Policy-Agreement/static/media/logo.7f9d10c9c7512ab1b899.png",
+    "static/media/signature.png": "/Olive-Garden-Alcohol-Policy-Agreement/static/media/signature.a0b65d9f1c26cb70974f.png",
+    "index.html": "/Olive-Garden-Alcohol-Policy-Agreement/index.html",
+    "static/media/closebutton.svg": "/Olive-Garden-Alcohol-Policy-Agreement/static/media/closebutton.9cbc5a5d4f8d98193235.svg",
+    "main.f7d0dd8b.css.map": "/Olive-Garden-Alcohol-Policy-Agreement/static/css/main.f7d0dd8b.css.map",
+    "main.549dd21a.js.map": "/Olive-Garden-Alcohol-Policy-Agreement/static/js/main.549dd21a.js.map",
+    "787.7d6cf84d.chunk.js.map": "/Olive-Garden-Alcohol-Policy-Agreement/static/js/787.7d6cf84d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f7d0dd8b.css",
+    "static/js/main.549dd21a.js"
+  ]
+}
