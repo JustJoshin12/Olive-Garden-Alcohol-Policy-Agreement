@@ -38,7 +38,7 @@ const SignatureCapture = () => {
         ref={sigCanvasRef}
         penColor="black"
         canvasProps={{
-          width: 500,
+          width: 600,
           height: 200,
           className: "signature-canvas",
           style: {
