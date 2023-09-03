@@ -19,9 +19,9 @@ const AddNameModal = () => {
         />
         <span className="modal__error"></span>
       </label>
-      <label>
+      <div>
         <SignatureCapture/>
-      </label>
+      </div>
     </div>
   );
 };
