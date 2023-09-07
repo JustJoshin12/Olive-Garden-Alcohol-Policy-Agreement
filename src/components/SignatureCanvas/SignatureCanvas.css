@@ -44,8 +44,3 @@
   }
 }
 
-@media screen and ( max-width: 680px){
-  .signature-canvas {
-    height: 300px;
-  }
-}

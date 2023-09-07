@@ -8,7 +8,7 @@ const EmployeeChart = () => {
         <div className="column">
           <h2 className="column__label">Name</h2>
           {employees.map((employee,index) => {
-            return <p className="column__employee-name" key={index}>{employee.name}</p>;
+            return <p className="column__employee-name" key={index}>{employee.firstName + " " + employee.lastName}</p>;
           })}
         </div>
         <div className="column">

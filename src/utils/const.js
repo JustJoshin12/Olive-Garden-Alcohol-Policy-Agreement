@@ -1,45 +1,51 @@
-import signature from "../images/signature.png"
+import signature from "../images/signature.png";
 
+const employees = [
+  {
+    firstName: "Joshua",
+    lastName: "Smith",
+    signature: signature,
+  },
+  {
+    firstName: "Jacob",
+    lastName:"Smith",
+    signature: signature,
+  },
+  {
+    firstName: "Domingo",
+    lastName: "Martinez",
+    signature: signature,
+  },
+  {
+    firstName: "Jacob",
+    lastName: "Saiger",
+    signature: signature,
+  },
+  {
+    firstName: "Damien",
+    lastName: "Vaquez",
+    signature: signature,
+  },
+  {
+    firstName: "Joey",
+    lastName: "White",
+    signature: signature,
+  },
+  {
+    firstName: "Vince",
+    lastName: "Him",
+    signature: signature,
+  },
+  {
+    firstName: "Danny",
+    lastName: "Markque",
+    signature: signature,
+  },
+  {
+    firstName: "Jason",
+    lastName: "Vorhees",
+    signature: signature,
+  },
+];
 
-
- const employees = [
-    {
-        name:"Joshua Smith",
-        signature:signature
-    },
-    { 
-        name:"Jacob Smith",
-        signature:signature
-    },
-    {
-        name:"Domingo Martinez",
-        signature:signature
-    },
-    {
-        name:"Jacob Saiger",
-        signature:signature
-    },
-    {
-        name:"Damien Vaquez",
-        signature:signature
-    },
-    {
-        name:"Joey White",
-        signature:signature
-    },
-    {
-        name:"Vince Him",
-        signature:signature
-    },
-    {
-        name:"Danny Markque",
-        signature:signature
-    },
-    {
-        name:"Jason Vorhees",
-        signature:signature
-    },
-
-]
-
-export default employees
+export default employees;
