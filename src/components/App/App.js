@@ -12,9 +12,12 @@ function App() {
   const [shiftTime, setShiftTime] = useState("");
   const [activeModal, setActiveModal] = useState("");
   const [hasReadPolicy, setHasReadPolicy] = useState(false);
+  const [employeeChartData, setEmployeeChartData] = useState([]);
+  const [timeStamp, setTimeStamp] = useState(0)
 
   useEffect(() => {
     const currentTime = new Date();
+    setTimeStamp(currentTime);
     const currentHour = currentTime.getHours();
     const after4pm = currentHour >= 16;
     if (after4pm === true) {
@@ -22,6 +25,13 @@ function App() {
     } else {
       setShiftTime("Lunch");
     }
+    getEmployeeData()
+    .then((data) => {
+      setEmployeeChartData(data)
+    })
+    .catch((error) => {
+      console.error(error);
+    })
   }, []);
 
   const handleAgreementModal = () => {
@@ -52,6 +62,7 @@ function App() {
         onPolicy={handlePolicyModal}
         onSearch={handleSearchModal}
         hasReadPolicy={hasReadPolicy}
+        employeeChartData={employeeChartData}
       />
       <Footer />
 
@@ -60,6 +71,8 @@ function App() {
           onClose={handleCloseModal}
           name="add-name"
           title="Policy Agreement Signature"
+          shiftTime={shiftTime}
+          timeStamp={timeStamp}
           >
           <AddNameModal />
         </ModalWithForm>

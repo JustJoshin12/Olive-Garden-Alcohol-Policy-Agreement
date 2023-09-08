@@ -25,7 +25,7 @@
 }
 
 .modal__input_type_error {
-  border-bottom: 1px solid #FF0000;
+  border-bottom: 1px solid #ff0000;
 }
 
 .signature__clear-button {
@@ -34,7 +34,37 @@
   height: auto;
   border-radius: 8px;
   background-color: #a89e24;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "SourceSerif";
+  font-size: 20px;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.signature__save-button {
+  margin-top: 15px;
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+  background-color: #a89e24;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -56,7 +86,11 @@
   height: 100%;
 }
 
-.signature__clear-button:hover{
+.signature__clear-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+.signature__save-button:hover {
   box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
   transform: translateY(-2px);
 }
@@ -66,8 +100,13 @@
     font-size: 1.4rem;
   }
   .signature__clear-button {
-    width: 160px;
-    font-size: 16px;
-    padding: 10px 16px;
+    width: 140px;
+    font-size: 15px;
+    padding: 8px 14px;
+  }
+  .signature__save-button {
+    width: 140px;
+    font-size: 15px;
+    padding: 8px 14px;
   }
 }

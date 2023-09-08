@@ -1,13 +1,13 @@
 import "./EmployeeChart.css";
 import employees from "../../utils/const";
 
-const EmployeeChart = () => {
+const EmployeeChart = ({employeeChartData}) => {
   return (
     <section className="employee__agreement-display">
       <div className="employee__agreement-display__chart">
         <div className="column">
           <h2 className="column__label">Name</h2>
-          {employees.map((employee,index) => {
+          {employeeChartData.map((employee,index) => {
             return <p className="column__employee-name" key={index}>{employee.firstName + " " + employee.lastName}</p>;
           })}
         </div>

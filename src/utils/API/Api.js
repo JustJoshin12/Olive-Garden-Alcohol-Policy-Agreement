@@ -29,7 +29,9 @@ export const sendEmployeeData = (data) => {
     body: JSON.stringify({
         firstName: data.firstname,
         lastName: data.lastName,
-        signature: data.signature
+        signature: data.signature,
+        shift: data.shift,
+        timeStamp: data.timeStamp
     }),
   })
   .then((res) => { if(res.ok) {

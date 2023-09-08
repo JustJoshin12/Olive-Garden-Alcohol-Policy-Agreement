@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./AddNameModal.css";
 import SignatureCanvas from "react-signature-canvas";
 
-const AddNameModal = ({signatureData, onChange,onSignatureCapture }) => {
-  console.log(signatureData)
+const AddNameModal = ({signatureData, onChange }) => {
 
   const sigCanvasRef = React.createRef();
 
@@ -11,11 +10,9 @@ const AddNameModal = ({signatureData, onChange,onSignatureCapture }) => {
     sigCanvasRef.current.clear();
   };
 
-  function handleSaveSignature (signatureData) {
-    signatureData = sigCanvasRef.current.getTrimmedCanvas().toDataURL("image/png");  
-    console.log(signatureData);
-    onSignatureCapture
-    
+  const handleSaveSignature = () => {
+    const imageData = sigCanvasRef.current.toDataURL();
+    signatureData(imageData);
   };
 
   return (
@@ -27,7 +24,7 @@ const AddNameModal = ({signatureData, onChange,onSignatureCapture }) => {
           <input
             className="border-black border-2 border-solid w-full rounded p-[5px] mb-[10px]"
             type="text"
-            name="firstname"
+            name="firstName"
             minLength="4"
             maxLength="15"
             placeholder="first"
@@ -43,7 +40,7 @@ const AddNameModal = ({signatureData, onChange,onSignatureCapture }) => {
           <input
             className="border-black border-2 border-solid w-full rounded p-[5px] mb-[10px]"
             type="text"
-            name="lastname"
+            name="lastName"
             minLength="4"
             maxLength="15"
             placeholder="last"
@@ -64,7 +61,7 @@ const AddNameModal = ({signatureData, onChange,onSignatureCapture }) => {
               />
             </div>
             <span></span>
-
+            <div className="flex justify-between">
             <button
               className="signature__clear-button"
               onClick={handleClear}
@@ -72,9 +69,10 @@ const AddNameModal = ({signatureData, onChange,onSignatureCapture }) => {
             >
               Clear Signature
             </button>
-            <button className="signature__save-button" onClick={signatureData} type="button"> 
+            <button className="signature__save-button" onClick={handleSaveSignature} type="button"> 
               Save Signature
             </button>
+            </div>
           </div>
       </div>
     

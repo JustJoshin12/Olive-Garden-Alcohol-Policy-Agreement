@@ -7,13 +7,17 @@ const ModalWithForm = ({
   onClose,
   title,
   buttonText = "Save",
+  shiftTime,
+  timeStamp,
 }) => {
   const [formData, setFormData] = useState({});
   const [signatureImage, setSignatureImage] = useState(null);
 
-  const handleSignatureCapture = () => {
-    setSignatureImage();
+  const handleSignatureCapture = (dataUrl) => {
+    setSignatureImage(dataUrl);
   };
+
+  console.log(timeStamp.getMonth());
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,15 +27,12 @@ const ModalWithForm = ({
     });
   };
 
-  const onSignatureCapture = (e) => {
-    console.log("Signature Captured:", e.target.ref)
-  };
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       return React.cloneElement(child, {
         onChange: handleInputChange,
-        signatureData:onSignatureCapture
+        signatureData: handleSignatureCapture,
       });
     }
     return child;
@@ -39,11 +40,12 @@ const ModalWithForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
 
     const finalFormData = {
       ...formData,
       signature: signatureImage,
+      shift: shiftTime,
+      timeStamp: `0${timeStamp.getMonth()}/${timeStamp.getDate()}/${timeStamp.getFullYear()}`,
     };
     console.log("Form Data", finalFormData);
   };
@@ -62,7 +64,7 @@ const ModalWithForm = ({
         <form onSubmit={handleSubmit}>
           {childrenWithProps}
           <div className="flex justify-end">
-            <button type="submit" className="modal__submit-button" onClick={onSignatureCapture}>
+            <button type="submit" className="modal__submit-button">
               {buttonText}
             </button>
           </div>
