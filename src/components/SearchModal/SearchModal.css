@@ -1,0 +1,33 @@
+.search-list-input__title {
+  font-family: "SourceSerif";
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.modal__radio-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.modal__radio-option {
+  display: flex;
+  align-items: center;
+}
+
+.modal__radio-button {
+  appearance: none;
+  background-color: white;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.modal__radio-button:checked {
+  background-color: black;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  padding: 2px;
+}

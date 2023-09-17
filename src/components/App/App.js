@@ -6,18 +6,30 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import AddNameModal from "../AddNameModal/AddNameModal";
 import PolicyModal from "../PolicyModal/PolicyModal";
 import Footer from "../Footer/Footer";
-import { getEmployeeData } from "../../utils/API/Api";
+import SearchModal from "../SearchModal/SearchModal";
+import { getEmployeeData, sendEmployeeData } from "../../utils/API/Api";
 
 function App() {
   const [shiftTime, setShiftTime] = useState("");
   const [activeModal, setActiveModal] = useState("");
   const [hasReadPolicy, setHasReadPolicy] = useState(false);
   const [employeeChartData, setEmployeeChartData] = useState([]);
-  const [timeStamp, setTimeStamp] = useState(0)
+  const [timeStamp, setTimeStamp] = useState(0);
+
+  const chartData = {
+    shift: shiftTime,
+    timeStamp: timeStamp,
+  };
+
 
   useEffect(() => {
+    const currentMonth = new Date().getMonth() + 1;
+    const currentDay = new Date().getDate();
+    const currentYear = new Date().getFullYear();
+    setTimeStamp(`${currentMonth}/${currentDay}/${currentYear}`); 
+  })
+  useEffect(() => {
     const currentTime = new Date();
-    setTimeStamp(currentTime);
     const currentHour = currentTime.getHours();
     const after4pm = currentHour >= 16;
     if (after4pm === true) {
@@ -25,13 +37,13 @@ function App() {
     } else {
       setShiftTime("Lunch");
     }
-    getEmployeeData()
-    .then((data) => {
-      setEmployeeChartData(data)
-    })
-    .catch((error) => {
-      console.error(error);
-    })
+    getEmployeeData(chartData)
+      .then((data) => {
+        setEmployeeChartData(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   const handleAgreementModal = () => {
@@ -54,6 +66,17 @@ function App() {
     setActiveModal("search");
   };
 
+  const addEmployeeData = (data) => {
+    sendEmployeeData(data)
+      .then((data) => {
+        setEmployeeChartData([data, ...employeeChartData]);
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error(error.status);
+      });
+  };
+
   return (
     <div className="bg-[#603b28] h-full max-w-[80%] mx-auto">
       <Header shiftTime={shiftTime} />
@@ -67,59 +90,23 @@ function App() {
       <Footer />
 
       {activeModal === "agreement" && (
-        <ModalWithForm 
+        <AddNameModal
           onClose={handleCloseModal}
-          name="add-name"
-          title="Policy Agreement Signature"
+          onAddData={addEmployeeData}
+          isOpen={activeModal === "agreement"}
           shiftTime={shiftTime}
           timeStamp={timeStamp}
-          >
-          <AddNameModal />
-        </ModalWithForm>
+        />
       )}
       {activeModal === "policy" && (
         <PolicyModal onClose={handleCloseModal} onDone={handleReadPolicy} />
       )}
       {activeModal === "search" && (
-        <ModalWithForm
-          onClose={handleCloseModal}
-          title="Search Saved Employee list"
-        >
-          <div className="modal__form-contents">
-            <label>
-              <p>Date</p>
-              <input
-                className="border-black border-2 border-solid w-full rounded p-[5px]"
-                type="date"
-                name="date"
-                minLength="8"
-                maxLength="30"
-                required
-              />
-            </label>
-            <p>Shift</p>
-            <div>
-              <input
-                className="modal__radio-button"
-                name="shiftType"
-                type="radio"
-                id="lunch"
-                value="lunch"
-              />
-              <label>Lunch</label>
-            </div>
-            <div>
-              <input
-                className="modal__radio-button"
-                name="shiftType"
-                type="radio"
-                id="dinner"
-                value="dinner"
-              />
-              <label>Dinner</label>
-            </div>
-          </div>
-        </ModalWithForm>
+       <SearchModal
+       onClose={handleCloseModal}
+       isOpen={activeModal === "search"}
+       chartData={chartData}
+       />
       )}
     </div>
   );

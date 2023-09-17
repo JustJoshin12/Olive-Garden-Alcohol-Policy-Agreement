@@ -10,7 +10,7 @@ const employeeChartData = employees;
       <PolicyAgreement onAgreement={onAgreement} onPolicy={onPolicy} hasReadPolicy={hasReadPolicy} />
       <EmployeeChart employeeChartData={employeeChartData} />
       <div className="flex justify-end mr-[40px]">
-        <button className={`modal__button`} onClick={onSearch}>Search</button>
+        <button className={`modal__button`} onClick={onSearch} >Search</button>
       </div>
     </main>
   );

@@ -16,6 +16,7 @@ const Header = ({ shiftTime }) => {
       </h1>
       <p className="header__date date">
         {currentDate} {shiftTime}
+        <button className="w-[20px] h-[20px]"></button>
       </p>
     </header>
   );

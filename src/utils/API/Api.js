@@ -8,37 +8,37 @@ const exampleAPIRequest = {
 
 const APIEndPoint = "http://localhost:8888/PolicyAgreement";
 
-export const getEmployeeData = () => {
-  const employeeAgreementData = fetch(APIEndPoint).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-  });
-  console.log(employeeAgreementData);
-  return employeeAgreementData;
+export const checkResponse = (res) => {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
-export const sendEmployeeData = (data) => {
+export const getEmployeeData = ({shift,timeStamp}) => {
+  return fetch(`${APIEndPoint}/SignatureList`,{
+    method: "POST",
+    body: JSON.stringify({
+      shift: shift,
+      timeStamp: timeStamp
+    })
+  }).then((res) => {
+    return checkResponse(res)
+  });
+};
+
+export const sendEmployeeData = ({firstName,lastName,signature,shiftTime,timeStamp}) => {
   return fetch(APIEndPoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-        firstName: data.firstname,
-        lastName: data.lastName,
-        signature: data.signature,
-        shift: data.shift,
-        timeStamp: data.timeStamp
+        firstName: firstName,
+        lastName: lastName,
+        signature: signature,
+        shift: shiftTime,
+        timeStamp: timeStamp
     }),
   })
-  .then((res) => { if(res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error: ${res.status}`);
-  }
-
+  .then((res) => { 
+      return checkResponse(res);
   })
 };

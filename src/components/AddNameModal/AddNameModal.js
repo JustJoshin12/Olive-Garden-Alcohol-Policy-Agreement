@@ -1,8 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AddNameModal.css";
 import SignatureCanvas from "react-signature-canvas";
+import { useState, useEffect } from "react";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const AddNameModal = ({signatureData, onChange }) => {
+const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [signature, setSignature] = useState("");
+
+  const handleFirstNameChange = (e) => {
+    setFirstName(e.target.value);
+  };
+  const handleLastNameChange = (e) => {
+    setLastName(e.target.value);
+  };
+
+  const handleSaveSignature = () => {
+    const imageData = sigCanvasRef.current.toDataURL();
+    setSignature(imageData);
+  };
 
   const sigCanvasRef = React.createRef();
 
@@ -10,12 +27,21 @@ const AddNameModal = ({signatureData, onChange }) => {
     sigCanvasRef.current.clear();
   };
 
-  const handleSaveSignature = () => {
-    const imageData = sigCanvasRef.current.toDataURL();
-    signatureData(imageData);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddData({firstName,lastName,signature,shiftTime,timeStamp})
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      setFirstName("");
+      setLastName("");
+      setSignature("");
+    }
+  }, [isOpen]);
+
   return (
+    <ModalWithForm onClose={onClose} isOpen={isOpen} onSubmit={handleSubmit}>
       <div className="modal__form-contents">
         <label>
           <p className=" text-2xl font-['SourceSerif'] mb-[10px] font-[700]">
@@ -29,7 +55,8 @@ const AddNameModal = ({signatureData, onChange }) => {
             maxLength="15"
             placeholder="first"
             required
-            onChange={onChange}
+            value={firstName}
+            onChange={handleFirstNameChange}
           />
           <span className="modal__error"></span>
         </label>
@@ -45,23 +72,24 @@ const AddNameModal = ({signatureData, onChange }) => {
             maxLength="15"
             placeholder="last"
             required
-            onChange={onChange}
+            value={lastName}
+            onChange={handleLastNameChange}
           />
           <span className="modal__error"></span>
         </label>
-          <div className="mt-[10px] mb-[20px] ">
-            <p className={`modal__input-title mb-[15px]`}>Signature</p>
-            <div className="w-[100%] h-[200px] border-solid border-2 border-black">
-              <SignatureCanvas
-                ref={sigCanvasRef}
-                penColor="black"
-                canvasProps={{
-                  className: "signature-canvas",
-                }}
-              />
-            </div>
-            <span></span>
-            <div className="flex justify-between">
+        <div className="mt-[10px] mb-[20px] ">
+          <p className={`modal__input-title mb-[15px]`}>Signature</p>
+          <div className="w-[100%] h-[200px] border-solid border-2 border-black">
+            <SignatureCanvas
+              ref={sigCanvasRef}
+              penColor="black"
+              canvasProps={{
+                className: "signature-canvas",
+              }}
+            />
+          </div>
+          <span></span>
+          <div className="flex justify-between">
             <button
               className="signature__clear-button"
               onClick={handleClear}
@@ -69,13 +97,17 @@ const AddNameModal = ({signatureData, onChange }) => {
             >
               Clear Signature
             </button>
-            <button className="signature__save-button" onClick={handleSaveSignature} type="button"> 
+            <button
+              className="signature__save-button"
+              onClick={handleSaveSignature}
+              type="button"
+            >
               Save Signature
             </button>
-            </div>
           </div>
+        </div>
       </div>
-    
+    </ModalWithForm>
   );
 };
 
