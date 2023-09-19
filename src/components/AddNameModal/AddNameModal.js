@@ -4,7 +4,7 @@ import SignatureCanvas from "react-signature-canvas";
 import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
+const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [signature, setSignature] = useState("");
@@ -31,7 +31,6 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ firstName, lastName, signature, shiftTime, timeStamp });
     onAddData({ firstName, lastName, signature, shiftTime, timeStamp });
   };
 

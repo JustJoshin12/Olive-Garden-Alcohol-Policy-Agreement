@@ -60,7 +60,7 @@ function App() {
   };
 
   const handleReadPolicy = () => {
-    setHasReadPolicy(!hasReadPolicy);
+    setHasReadPolicy(true);
     setActiveModal("");
   };
   const handleSearchModal = () => {
@@ -71,6 +71,7 @@ function App() {
     sendEmployeeData(data)
       .then((data) => {
         setEmployeeChartData([data, ...employeeChartData]);
+        setHasReadPolicy(false)
         handleCloseModal();
       })
       .catch((error) => {
@@ -84,11 +85,10 @@ function App() {
     <div className="bg-[#603b28] h-full max-w-[80%] mx-auto">
       <Header shiftTime={shift} />
       <Switch>
-        <Route exact path="/Olive-Garden-Alcohol-Policy-Agreement/">
+        <Route exact path="/">
           <Main
             onAgreement={handleAgreementModal}
             onPolicy={handlePolicyModal}
-            onSearch={handleSearchModal}
             hasReadPolicy={hasReadPolicy}
             employeeChartData={employeeChartData}
           />
@@ -106,6 +106,7 @@ function App() {
           isOpen={activeModal === "agreement"}
           shiftTime={shift}
           timeStamp={timeStamp}
+          setReadPolicy={setHasReadPolicy}
         />
       )}
       {activeModal === "policy" && (
