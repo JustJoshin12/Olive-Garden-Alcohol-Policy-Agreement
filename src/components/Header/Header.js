@@ -10,7 +10,7 @@ const Header = ({ shiftTime }) => {
 
   return (
     <header className="header">
-      <Link to="/">
+      <Link to="/Olive-Garden-Alcohol-Policy-Agreement/">
         <img className="header__logo logo" src={logo} alt="logo image" />
       </Link>
       <h1 className="header__title title">

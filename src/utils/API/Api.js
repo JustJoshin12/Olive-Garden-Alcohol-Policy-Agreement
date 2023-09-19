@@ -30,7 +30,7 @@ export const sendEmployeeData = ({firstName,lastName,signature,shiftTime,timeSta
         lastName: lastName,
         signature: signature,
         shift: shiftTime,
-        timeStamp: timeStamp,
+        timestamp: timeStamp,
     }),
   })
   .then((res) => { 
