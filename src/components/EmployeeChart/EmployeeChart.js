@@ -1,5 +1,5 @@
 import "./EmployeeChart.css";
-import employees from "../../utils/const";
+
 
 const EmployeeChart = ({employeeChartData}) => {
   return (
@@ -13,12 +13,13 @@ const EmployeeChart = ({employeeChartData}) => {
         </div>
         <div className="column">
           <div className="column__label">Signature</div>
-          {employees.map((employee) => {
+          {employeeChartData.map((employee, index) => {
             return (
               <img
                 className="column__employee-signature"
                 src={employee.signature}
                 alt="signature"
+                key={index}
               />
             );
           })}

@@ -27,9 +27,12 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
     sigCanvasRef.current.clear();
   };
 
+  console.log(timeStamp);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddData({firstName,lastName,signature,shiftTime,timeStamp})
+    console.log({ firstName, lastName, signature, shiftTime, timeStamp });
+    onAddData({ firstName, lastName, signature, shiftTime, timeStamp });
   };
 
   useEffect(() => {
@@ -41,7 +44,7 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
   }, [isOpen]);
 
   return (
-    <ModalWithForm onClose={onClose} isOpen={isOpen} onSubmit={handleSubmit}>
+    <ModalWithForm onClose={onClose} isOpen={isOpen} onSubmit={handleSubmit} title="Policy Agreement Signature">
       <div className="modal__form-contents">
         <label>
           <p className=" text-2xl font-['SourceSerif'] mb-[10px] font-[700]">
@@ -51,8 +54,7 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
             className="border-black border-2 border-solid w-full rounded p-[5px] mb-[10px]"
             type="text"
             name="firstName"
-            minLength="4"
-            maxLength="15"
+            minLength="1"
             placeholder="first"
             required
             value={firstName}
@@ -68,8 +70,7 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
             className="border-black border-2 border-solid w-full rounded p-[5px] mb-[10px]"
             type="text"
             name="lastName"
-            minLength="4"
-            maxLength="15"
+            minLength="1"
             placeholder="last"
             required
             value={lastName}

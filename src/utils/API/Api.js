@@ -1,12 +1,6 @@
-const exampleAPIRequest = {
-  firstName: "Jacob",
-  lastName: "Smith",
-  signature: "filepath",
-  shift: "Dinner",
-  timestop: "08/31/2023",
-};
 
-const APIEndPoint = "http://localhost:8888/PolicyAgreement";
+
+const APIEndPoint = "http://localhost:8888";
 
 export const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -17,7 +11,7 @@ export const getEmployeeData = ({shift,timeStamp}) => {
     method: "POST",
     body: JSON.stringify({
       shift: shift,
-      timeStamp: timeStamp
+      timestamp: timeStamp
     })
   }).then((res) => {
     return checkResponse(res)
@@ -25,7 +19,8 @@ export const getEmployeeData = ({shift,timeStamp}) => {
 };
 
 export const sendEmployeeData = ({firstName,lastName,signature,shiftTime,timeStamp}) => {
-  return fetch(APIEndPoint, {
+  console.log(timeStamp)
+  return fetch(`${APIEndPoint}/PolicyAgreement`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -35,7 +30,7 @@ export const sendEmployeeData = ({firstName,lastName,signature,shiftTime,timeSta
         lastName: lastName,
         signature: signature,
         shift: shiftTime,
-        timeStamp: timeStamp
+        timeStamp: timeStamp,
     }),
   })
   .then((res) => { 

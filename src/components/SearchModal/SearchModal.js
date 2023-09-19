@@ -3,43 +3,44 @@ import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { getEmployeeData } from "../../utils/API/Api";
 
-const SearchModal = ({ isOpen, onClose}) => {
-  const [shiftType, setShiftType] = useState("");
-  const [date, setDate] = useState("");
+const SearchModal = ({ isOpen, onClose, onSearchData}) => {
+  const [shift, setShift] = useState("");
+  const [timeStamp, setTimeStamp] = useState("");
 
   useEffect(() => {
     if(isOpen){
-      setShiftType('')
-      setDate('')
+      setShift('')
+      setTimeStamp('')
     }
-  },[]);
+  },[isOpen]);
 
   const handleShiftChange = (e) => {
-    setShiftType(e.target.value);
+    setShift(e.target.value);
   };
 
   const handleDateChange = (e) => {
     const inputDate = e.target.value;
     const dateSplit = inputDate.split("-");
     const formattedDate = `${dateSplit[1]}/${dateSplit[2]}/${dateSplit[0]}`;
-    setDate(formattedDate);
+    setTimeStamp(formattedDate);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getEmployeeData({shiftType,date})
-    .then((res) => {
-      console.log(res);
+    getEmployeeData({shift,timeStamp})
+    .then((data) => {
+      onSearchData(data);
+      onClose()
     })
   };
 
   return (
-    <ModalWithForm onClose={onClose} isOpen={isOpen} onSubmit={handleSubmit}>
+    <ModalWithForm onClose={onClose} isOpen={isOpen} onSubmit={handleSubmit} title="Search Employee List">
       <div className="modal__form-contents">
-        <label>
+        <label className="flex flex-col mb-[24px]">
           <p className="search-list-input__title">Date</p>
           <input
-            className="border-black border-2 border-solid w-full rounded p-[5px] mb-[10px]"
+            className="border-black border-2 border-solid w-full rounded p-[2px] mb-[10px]"
             type="date"
             name="date"
             minLength="8"

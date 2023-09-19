@@ -1,6 +1,6 @@
 import "./ModalWithForm.css";
-import React, { useState } from "react";
-import { sendEmployeeData } from "../../utils/API/Api";
+import React from "react" ;
+
 
 const ModalWithForm = ({
   children,
@@ -8,10 +8,7 @@ const ModalWithForm = ({
   onClose,
   title,
   buttonText = "Save",
-  shiftTime,
-  timeStamp,
-  onSubmit,
-  isOpen
+  onSubmit
 }) => {
  
     return (
@@ -22,7 +19,7 @@ const ModalWithForm = ({
             onClick={onClose}
             className="modal__close-button"
           />
-          <h3 className="font-['SourceSeriff'] font-bold text-[44px] mt-[26px] text-center pb-[40px]">
+          <h3 className="font-['SourceSeriff'] font-bold text-[40px] mt-[26px] text-center pb-[40px]">
             {title}
           </h3>
           <form onSubmit={onSubmit}>

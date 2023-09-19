@@ -1,5 +1,6 @@
 import "./Header.css";
 import logo from "../../images/logo.png";
+import { Link } from "react-router-dom";
 
 const Header = ({ shiftTime }) => {
   const currentDate = new Date().toLocaleString("default", {
@@ -9,14 +10,18 @@ const Header = ({ shiftTime }) => {
 
   return (
     <header className="header">
-      <img className="header__logo logo" src={logo} alt="logo image" />
+      <Link to="/">
+        <img className="header__logo logo" src={logo} alt="logo image" />
+      </Link>
       <h1 className="header__title title">
         Daily Verification of responsible <br />
         service of Alcohol Policy.
       </h1>
       <p className="header__date date">
         {currentDate} {shiftTime}
-        <button className="w-[20px] h-[20px]"></button>
+        <Link to="/search">
+        <button className="w-[30px] h-[30px]"></button>
+        </Link>
       </p>
     </header>
   );
