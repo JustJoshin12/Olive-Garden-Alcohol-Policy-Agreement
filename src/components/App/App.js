@@ -85,7 +85,7 @@ function App() {
     <div className="bg-[#603b28] h-full max-w-[80%] mx-auto">
       <Header shiftTime={shift} />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/Olive-Garden-Alcohol-Policy-Agreement">
           <Main
             onAgreement={handleAgreementModal}
             onPolicy={handlePolicyModal}
@@ -93,7 +93,7 @@ function App() {
             employeeChartData={employeeChartData}
           />
         </Route>
-        <Route path="/search">
+        <Route path="/Olive-Garden-Alcohol-Policy-Agreement/search">
           <SearchListPage onSearch={handleSearchModal} searchData={searchData}/>
         </Route>
       </Switch>

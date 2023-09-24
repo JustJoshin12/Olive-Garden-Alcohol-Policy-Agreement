@@ -1,6 +1,6 @@
 
 
-const APIEndPoint = "http://localhost:8888";
+const APIEndPoint = "https://32e3-67-165-141-227.ngrok.io";
 
 export const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
