@@ -16,12 +16,11 @@ function App() {
   const [hasReadPolicy, setHasReadPolicy] = useState(false);
   const [employeeChartData, setEmployeeChartData] = useState([]);
   const [timeStamp, setTimeStamp] = useState(0);
-  const [searchData, setSearchData] = useState([])
+  const [searchData, setSearchData] = useState([]);
 
   useEffect(() => {
     const currentMonth = new Date().getMonth() + 1;
-    const formattedMonth =
-      currentMonth < 10 ? `0${currentMonth}` : currentMonth.toString();
+    const formattedMonth = currentMonth < 10 ? `0${currentMonth}` : currentMonth.toString();
     const currentDay = new Date().getDate();
     const currentYear = new Date().getFullYear();
     setTimeStamp(`${formattedMonth}/${currentDay}/${currentYear}`);
@@ -71,15 +70,13 @@ function App() {
     sendEmployeeData(data)
       .then((data) => {
         setEmployeeChartData([data, ...employeeChartData]);
-        setHasReadPolicy(false)
+        setHasReadPolicy(false);
         handleCloseModal();
       })
       .catch((error) => {
         console.error(error.status);
       });
   };
-
-  
 
   return (
     <div className="bg-[#603b28] h-full max-w-[80%] mx-auto">
@@ -94,7 +91,10 @@ function App() {
           />
         </Route>
         <Route path="/Olive-Garden-Alcohol-Policy-Agreement/search">
-          <SearchListPage onSearch={handleSearchModal} searchData={searchData}/>
+          <SearchListPage
+            onSearch={handleSearchModal}
+            searchData={searchData}
+          />
         </Route>
       </Switch>
       <Footer />
