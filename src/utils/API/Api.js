@@ -1,4 +1,4 @@
-const APIEndPoint = "https://2359-67-165-141-227.ngrok-free.app";
+const APIEndPoint = "https://2d7e-67-165-141-227.ngrok-free.app";
 
 export const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
