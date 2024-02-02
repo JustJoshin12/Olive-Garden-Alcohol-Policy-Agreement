@@ -7,7 +7,7 @@ const ModalWithForm = ({
   name,
   onClose,
   title,
-  buttonText = "Save",
+  buttonText,
   onSubmit
 }) => {
  

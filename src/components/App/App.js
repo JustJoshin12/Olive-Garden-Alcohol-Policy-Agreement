@@ -8,7 +8,9 @@ import PolicyModal from "../PolicyModal/PolicyModal";
 import Footer from "../Footer/Footer";
 import SearchModal from "../SearchModal/SearchModal";
 import { SearchListPage } from "../SearchListPage/SearchListPage";
-import { getEmployeeData, sendEmployeeData } from "../../utils/API/Api";
+import { getEmployeeData, sendEmployeeData, sendLoginData, sendSignupData } from "../../utils/API/Api";
+import ManagerLoginModal from "../ManagerLoginModal/ManagerLoginModal";
+import ManagerSignupModal from "../ManagerSignupModal/ManagerSignupModal";
 
 function App() {
   const [shift, setShift] = useState("");
@@ -57,6 +59,13 @@ function App() {
   const handlePolicyModal = () => {
     setActiveModal("policy");
   };
+  const handleLoginModal = () => {
+    setActiveModal("login")
+  };
+
+  const handleSignupModal = () => {
+    setActiveModal("signup")
+  };
 
   const handleReadPolicy = () => {
     setHasReadPolicy(true);
@@ -78,6 +87,26 @@ function App() {
       });
   };
 
+  const handleLogin = (data) => {
+    sendLoginData(data)
+    .then((data) => {
+      console.log("success")
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+
+  const handleSignup = (data) => {
+    sendSignupData(data)
+    .then((data) => {
+      console.log('success')
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+
   return (
     <div className="bg-[#603b28] h-full max-w-[80%] mx-auto">
       <Header shiftTime={shift} />
@@ -97,6 +126,12 @@ function App() {
           />
         </Route>
       </Switch>
+      <div className="flex pb-6 items-center justify-end gap-5">
+        <p className="text-2xl font-semibold">Manager? Login here</p>
+      <button className="modal__submit-button" onClick={handleLoginModal}>Login</button>
+      </div>
+      
+      {/* <button className="modal__submit-button" onClick={handleSignupModal}>Signup</button> */}
       <Footer />
 
       {activeModal === "agreement" && (
@@ -118,6 +153,12 @@ function App() {
           isOpen={activeModal === "search"}
           onSearchData={setSearchData}
         />
+      )}
+      {activeModal === "login" && (
+        <ManagerLoginModal onClose={handleCloseModal} isOpen={activeModal === "login"} onLogin={handleLogin}/>
+      )}
+      {activeModal === "signup" && (
+        <ManagerSignupModal onClose={handleCloseModal} isOpen={activeModal === "signup"} addManager={handleSignup} />
       )}
     </div>
   );

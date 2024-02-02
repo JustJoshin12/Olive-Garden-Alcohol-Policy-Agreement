@@ -45,3 +45,37 @@ export const sendEmployeeData = ({
     return checkResponse(res);
   });
 };
+
+export const sendLoginData = ({username,password}) => {
+return fetch(`${APIEndPoint}/SignIn`,{
+  method: "POST",
+  mode: 'cors',
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    userName: username,
+    password: password
+  })
+}).then((res) => {
+  return checkResponse(res)
+})
+};
+
+export const sendSignupData = ({firstName,lastName,email,username,password}) => {
+  return fetch(`${APIEndPoint}/ManagerEntrySOR`, {
+    method: "POST",
+    mode: 'cors',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+       firstName: firstName,
+       lastName: lastName,
+       email: email,
+       userName: username,
+       password: password
+    })
+
+  })
+}

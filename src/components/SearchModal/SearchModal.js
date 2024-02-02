@@ -35,7 +35,7 @@ const SearchModal = ({ isOpen, onClose, onSearchData}) => {
   };
 
   return (
-    <ModalWithForm onClose={onClose} isOpen={isOpen} onSubmit={handleSubmit} title="Search Employee List">
+    <ModalWithForm onClose={onClose} isOpen={isOpen} onSubmit={handleSubmit} title="Search Employee List" buttonText="Search">
       <div className="modal__form-contents">
         <label className="flex flex-col mb-[24px]">
           <p className="search-list-input__title">Date</p>

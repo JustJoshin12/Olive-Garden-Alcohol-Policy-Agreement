@@ -3,18 +3,13 @@ import "./AddNameModal.css";
 import SignatureCanvas from "react-signature-canvas";
 import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData}) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation();
+
   const [signature, setSignature] = useState("");
-
-  const handleFirstNameChange = (e) => {
-    setFirstName(e.target.value);
-  };
-  const handleLastNameChange = (e) => {
-    setLastName(e.target.value);
-  };
 
   const handleSaveSignature = () => {
     const imageData = sigCanvasRef.current.toDataURL();
@@ -27,23 +22,32 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData}) => {
     sigCanvasRef.current.clear();
   };
 
-  console.log(timeStamp);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddData({ firstName, lastName, signature, shiftTime, timeStamp });
+    if (!isValid) return;
+    onAddData({
+      firstName: values.firstName,
+      lastName: values.lastName,
+      signature,
+      shiftTime,
+      timeStamp,
+    });
   };
 
   useEffect(() => {
     if (isOpen) {
-      setFirstName("");
-      setLastName("");
-      setSignature("");
+      resetForm();
     }
-  }, [isOpen]);
+  }, [isOpen, resetForm]);
 
   return (
-    <ModalWithForm onClose={onClose} isOpen={isOpen} onSubmit={handleSubmit} title="Policy Agreement Signature">
+    <ModalWithForm
+      onClose={onClose}
+      isOpen={isOpen}
+      onSubmit={handleSubmit}
+      title="Policy Agreement Signature"
+      buttonText="Save"
+    >
       <div className="modal__form-contents">
         <label>
           <p className=" text-2xl font-['SourceSerif'] mb-[10px] font-[700]">
@@ -53,13 +57,16 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData}) => {
             className="border-black border-2 border-solid w-full rounded p-[5px] mb-[10px]"
             type="text"
             name="firstName"
-            minLength="1"
+            minLength="4"
+            maxLength="10"
             placeholder="first"
             required
-            value={firstName}
-            onChange={handleFirstNameChange}
+            value={values.firstName || ""}
+            onChange={handleChange}
           />
-          <span className="modal__error"></span>
+          {errors.firstName && (
+            <span className="text-red-500">{errors.firstName}</span>
+          )}
         </label>
         <label>
           <p className=" text-2xl font-['SourceSerif'] mb-[10px] font-[700]">
@@ -69,13 +76,16 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData}) => {
             className="border-black border-2 border-solid w-full rounded p-[5px] mb-[10px]"
             type="text"
             name="lastName"
-            minLength="1"
+            minLength="4"
+            maxLength="10"
             placeholder="last"
             required
-            value={lastName}
-            onChange={handleLastNameChange}
+            value={values.lastName || ""}
+            onChange={handleChange}
           />
-          <span className="modal__error"></span>
+          {errors.lastName && (
+            <span className="text-red-500">{errors.lastName}</span>
+          )}
         </label>
         <div className="mt-[10px] mb-[20px] ">
           <p className={`modal__input-title mb-[15px]`}>Signature</p>
