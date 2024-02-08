@@ -48,8 +48,8 @@ const ManagerLoginModal = ({ onClose, isOpen, onLogin }) => {
             type="password"
             name="password"
             value={values.password || ""}
-            minLength="5"
-            maxLength="10"
+            minLength="4"
+            maxLength="15"
             required
             onChange={handleChange}
           />

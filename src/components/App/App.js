@@ -96,9 +96,10 @@ function App() {
     sendLoginData(data)
       .then((data) => {
         setCurrentUser(data);
-        setLoggedIn(true)
+        setLoggedIn(true);
       })
       .catch((error) => {
+        window.alert("incorrect email or password.");
         console.error(error);
       });
   };
@@ -106,16 +107,17 @@ function App() {
   const handleSignup = (data) => {
     sendSignupData(data)
       .then((data) => {
-        console.log(data);
+        window.alert("Manager successfully added to system.");
       })
       .catch((error) => {
+        window.alert("An error has occurred");
         console.error(error);
       });
   };
 
   const handleLogOut = () => {
     setLoggedIn(false);
-    setCurrentUser({})
+    setCurrentUser({});
   };
 
   return (
@@ -138,25 +140,31 @@ function App() {
         </Route>
       </Switch>
       {loggedIn ? (
-        <div className="flex pb-6 items-center gap-5 justify-evenly">
-          <div className="text-xl font-semibold md:text-2xl">{currentUser.firstName + ' ' + currentUser.lastName}</div>
-          <div className="flex gap-4 items-center">
-            <p className="text-xl font-semibold md:text-2xl">Add Manager</p>
-            <button
-              className="modal__submit-button px-3"
-              onClick={handleSignupModal}
-            >
-              Signup
-            </button>
-            <p className="text-xl font-semibold md:text-2xl">Or</p>
-            <Link to="/Olive-Garden-Alcohol-Policy-Agreement">
+        <div className="flex flex-col pb-6 items-center gap-5 justify-evenly md:flex-row">
+          <div className="text-lg font-bold font-serif md:text-3xl">
+            {currentUser.firstName + " " + currentUser.lastName}
+          </div>
+          <div className="flex flex-col items-center md:flex-row md:gap-3">
+            <p className="text-xl items-center font-semibold md:text-2xl">
+              Add Manager
+            </p>
+            <div className="flex pt-5 gap-3">
               <button
                 className="modal__submit-button px-3"
-                onClick={handleLogOut}
+                onClick={handleSignupModal}
               >
-                LogOut
+                Signup
               </button>
-            </Link>
+              <p className="text-xl font-semibold md:text-2xl">Or</p>
+              <Link to="/Olive-Garden-Alcohol-Policy-Agreement">
+                <button
+                  className="modal__submit-button px-3"
+                  onClick={handleLogOut}
+                >
+                  LogOut
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       ) : (

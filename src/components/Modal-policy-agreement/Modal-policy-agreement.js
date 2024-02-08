@@ -9,7 +9,7 @@ const PolicyAgreement = ({ onPolicy, loggedIn, onSearch }) => {
       </button>
       {loggedIn ? (
         <Link to="/Olive-Garden-Alcohol-Policy-Agreement/search">
-          <button className="modal__button" onClick={onSearch}>Search Date</button>
+          <button className="modal__button" onClick={onSearch}>Search</button>
         </Link>
       ) : (
         <></>

@@ -19,9 +19,6 @@ const Header = ({ shiftTime }) => {
       </h1>
       <p className="header__date date">
         {currentDate} {shiftTime}
-        <Link to="/Olive-Garden-Alcohol-Policy-Agreement/search">
-        <button className="w-[30px] h-[30px]"></button>
-        </Link>
       </p>
     </header>
   );
