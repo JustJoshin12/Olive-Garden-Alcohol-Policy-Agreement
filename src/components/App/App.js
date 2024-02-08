@@ -8,25 +8,36 @@ import PolicyModal from "../PolicyModal/PolicyModal";
 import Footer from "../Footer/Footer";
 import SearchModal from "../SearchModal/SearchModal";
 import { SearchListPage } from "../SearchListPage/SearchListPage";
-import { getEmployeeData, sendEmployeeData, sendLoginData, sendSignupData } from "../../utils/API/Api";
+import { Link } from "react-router-dom";
+import {
+  getEmployeeData,
+  sendEmployeeData,
+  sendLoginData,
+  sendSignupData,
+} from "../../utils/API/Api";
 import ManagerLoginModal from "../ManagerLoginModal/ManagerLoginModal";
 import ManagerSignupModal from "../ManagerSignupModal/ManagerSignupModal";
 
 function App() {
   const [shift, setShift] = useState("");
   const [activeModal, setActiveModal] = useState("");
-  const [hasReadPolicy, setHasReadPolicy] = useState(false);
   const [employeeChartData, setEmployeeChartData] = useState([]);
   const [timeStamp, setTimeStamp] = useState(0);
   const [searchData, setSearchData] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-    const currentMonth = new Date().getMonth() + 1;
-    const formattedMonth = currentMonth < 10 ? `0${currentMonth}` : currentMonth.toString();
-    const currentDay = new Date().getDate();
-    const currentYear = new Date().getFullYear();
-    setTimeStamp(`${formattedMonth}/${currentDay}/${currentYear}`);
+    const date = new Date();
+    const formattedDate = `${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}/${date
+      .getDate()
+      .toString()
+      .padStart(2, "0")}/${date.getFullYear()}`;
+    setTimeStamp(formattedDate);
   }, []);
+
   useEffect(() => {
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
@@ -48,10 +59,6 @@ function App() {
       });
   }, [shift, timeStamp]);
 
-  const handleAgreementModal = () => {
-    setActiveModal("agreement");
-  };
-
   const handleCloseModal = () => {
     setActiveModal("");
   };
@@ -60,16 +67,15 @@ function App() {
     setActiveModal("policy");
   };
   const handleLoginModal = () => {
-    setActiveModal("login")
+    setActiveModal("login");
   };
 
   const handleSignupModal = () => {
-    setActiveModal("signup")
+    setActiveModal("signup");
   };
 
   const handleReadPolicy = () => {
-    setHasReadPolicy(true);
-    setActiveModal("");
+    setActiveModal("agreement");
   };
   const handleSearchModal = () => {
     setActiveModal("search");
@@ -79,7 +85,6 @@ function App() {
     sendEmployeeData(data)
       .then((data) => {
         setEmployeeChartData([data, ...employeeChartData]);
-        setHasReadPolicy(false);
         handleCloseModal();
       })
       .catch((error) => {
@@ -89,23 +94,29 @@ function App() {
 
   const handleLogin = (data) => {
     sendLoginData(data)
-    .then((data) => {
-      console.log("success")
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-  }
+      .then((data) => {
+        setCurrentUser(data);
+        setLoggedIn(true)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const handleSignup = (data) => {
     sendSignupData(data)
-    .then((data) => {
-      console.log('success')
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-  }
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleLogOut = () => {
+    setLoggedIn(false);
+    setCurrentUser({})
+  };
 
   return (
     <div className="bg-[#603b28] h-full max-w-[80%] mx-auto">
@@ -113,10 +124,10 @@ function App() {
       <Switch>
         <Route exact path="/Olive-Garden-Alcohol-Policy-Agreement">
           <Main
-            onAgreement={handleAgreementModal}
             onPolicy={handlePolicyModal}
-            hasReadPolicy={hasReadPolicy}
             employeeChartData={employeeChartData}
+            loggedIn={loggedIn}
+            onSearch={handleSearchModal}
           />
         </Route>
         <Route path="/Olive-Garden-Alcohol-Policy-Agreement/search">
@@ -126,12 +137,39 @@ function App() {
           />
         </Route>
       </Switch>
-      <div className="flex pb-6 items-center justify-end gap-5">
-        <p className="text-2xl font-semibold">Manager? Login here</p>
-      <button className="modal__submit-button" onClick={handleLoginModal}>Login</button>
-      </div>
-      
-      {/* <button className="modal__submit-button" onClick={handleSignupModal}>Signup</button> */}
+      {loggedIn ? (
+        <div className="flex pb-6 items-center gap-5 justify-evenly">
+          <div className="text-xl font-semibold md:text-2xl">{currentUser.firstName + ' ' + currentUser.lastName}</div>
+          <div className="flex gap-4 items-center">
+            <p className="text-xl font-semibold md:text-2xl">Add Manager</p>
+            <button
+              className="modal__submit-button px-3"
+              onClick={handleSignupModal}
+            >
+              Signup
+            </button>
+            <p className="text-xl font-semibold md:text-2xl">Or</p>
+            <Link to="/Olive-Garden-Alcohol-Policy-Agreement">
+              <button
+                className="modal__submit-button px-3"
+                onClick={handleLogOut}
+              >
+                LogOut
+              </button>
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <div className="flex pb-6 items-center justify-end gap-5">
+          <p className="text-xl font-semibold md:text-2xl">
+            Manager? Login here
+          </p>
+
+          <button className="modal__submit-button" onClick={handleLoginModal}>
+            Login
+          </button>
+        </div>
+      )}
       <Footer />
 
       {activeModal === "agreement" && (
@@ -141,7 +179,6 @@ function App() {
           isOpen={activeModal === "agreement"}
           shiftTime={shift}
           timeStamp={timeStamp}
-          setReadPolicy={setHasReadPolicy}
         />
       )}
       {activeModal === "policy" && (
@@ -155,10 +192,18 @@ function App() {
         />
       )}
       {activeModal === "login" && (
-        <ManagerLoginModal onClose={handleCloseModal} isOpen={activeModal === "login"} onLogin={handleLogin}/>
+        <ManagerLoginModal
+          onClose={handleCloseModal}
+          isOpen={activeModal === "login"}
+          onLogin={handleLogin}
+        />
       )}
       {activeModal === "signup" && (
-        <ManagerSignupModal onClose={handleCloseModal} isOpen={activeModal === "signup"} addManager={handleSignup} />
+        <ManagerSignupModal
+          onClose={handleCloseModal}
+          isOpen={activeModal === "signup"}
+          addManager={handleSignup}
+        />
       )}
     </div>
   );

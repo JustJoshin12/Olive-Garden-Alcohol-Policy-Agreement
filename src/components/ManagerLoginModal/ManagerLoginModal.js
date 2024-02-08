@@ -9,7 +9,7 @@ const ManagerLoginModal = ({ onClose, isOpen, onLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isValid) return;
-    onLogin({ username: values.username, password: values.password });
+    onLogin({ email: values.email, password: values.password });
     onClose();
   };
 
@@ -29,14 +29,13 @@ const ManagerLoginModal = ({ onClose, isOpen, onLogin }) => {
     >
       <div className="pb-6">
         <label className="flex flex-col mb-[24px]">
-          <p className="search-list-input__title">Username</p>
+          <p className="search-list-input__title">Email</p>
           <input
             className="border-black border-2 border-solid w-full rounded p-[2px] mb-[10px]"
-            type="text"
-            name="username"
-            value={values.username || ""}
+            type="email"
+            name="email"
+            value={values.email || ""}
             minLength="5"
-            maxLength="15"
             required
             onChange={handleChange}
           />

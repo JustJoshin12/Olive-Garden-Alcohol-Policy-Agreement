@@ -13,7 +13,6 @@ const ManagerSignupModal = ({ isOpen, onClose, addManager }) => {
       firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
-      username: values.username,
       password: values.password,
     });
     onClose();
@@ -78,22 +77,6 @@ const ManagerSignupModal = ({ isOpen, onClose, addManager }) => {
             onChange={handleChange}
           />
           {errors.email && <div className="text-red-500">{errors.email}</div>}
-        </label>
-        <label>
-          <p className="search-list-input__title">UserName</p>
-          <input
-            className="border-black border-2 border-solid w-full rounded p-[2px] mb-[10px]"
-            type="text"
-            name="username"
-            value={values.username || ""}
-            minLength="4"
-            maxLength="15"
-            required
-            onChange={handleChange}
-          />
-          {errors.username && (
-            <div className="text-red-500">{errors.username}</div>
-          )}
         </label>
         <label>
           <p className="search-list-input__title">Password</p>

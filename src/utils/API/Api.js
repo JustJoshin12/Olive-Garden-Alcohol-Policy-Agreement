@@ -27,7 +27,6 @@ export const sendEmployeeData = ({
   shiftTime,
   timeStamp,
 }) => {
-  console.log(timeStamp);
   return fetch(`${APIEndPoint}/PolicyAgreement`, {
     method: "POST",
     mode: 'cors',
@@ -46,7 +45,7 @@ export const sendEmployeeData = ({
   });
 };
 
-export const sendLoginData = ({username,password}) => {
+export const sendLoginData = ({email,password}) => {
 return fetch(`${APIEndPoint}/SignIn`,{
   method: "POST",
   mode: 'cors',
@@ -54,7 +53,7 @@ return fetch(`${APIEndPoint}/SignIn`,{
     "Content-Type": "application/json",
   },
   body: JSON.stringify({
-    userName: username,
+    email: email,
     password: password
   })
 }).then((res) => {
@@ -62,7 +61,7 @@ return fetch(`${APIEndPoint}/SignIn`,{
 })
 };
 
-export const sendSignupData = ({firstName,lastName,email,username,password}) => {
+export const sendSignupData = ({firstName,lastName,email,password}) => {
   return fetch(`${APIEndPoint}/ManagerEntrySOR`, {
     method: "POST",
     mode: 'cors',
@@ -73,7 +72,6 @@ export const sendSignupData = ({firstName,lastName,email,username,password}) => 
        firstName: firstName,
        lastName: lastName,
        email: email,
-       userName: username,
        password: password
     })
 

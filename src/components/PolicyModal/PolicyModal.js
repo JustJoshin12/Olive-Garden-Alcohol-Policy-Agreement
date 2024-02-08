@@ -28,7 +28,7 @@ const PolicyModal = ({ onClose, onDone }) => {
             disabled={!isChecked}
             onClick={onDone}
           >
-            Done
+            Agree
           </button>
           <div className="flex items-center">
             <input

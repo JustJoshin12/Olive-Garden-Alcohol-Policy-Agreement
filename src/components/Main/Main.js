@@ -2,10 +2,10 @@ import "./Main.css";
 import PolicyAgreement from "../Modal-policy-agreement/Modal-policy-agreement";
 import EmployeeChart from "../EmployeeChart/EmployeeChart";
 
-const Main = ({ onAgreement, onPolicy, hasReadPolicy, employeeChartData }) => {
+const Main = ({ onPolicy, employeeChartData, loggedIn, onSearch }) => {
   return (
     <main className="main">
-      <PolicyAgreement onAgreement={onAgreement} onPolicy={onPolicy} hasReadPolicy={hasReadPolicy} />
+      <PolicyAgreement onPolicy={onPolicy} loggedIn={loggedIn} onSearch={onSearch}/>
       <EmployeeChart employeeChartData={employeeChartData} />
     </main>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import "./AddNameModal.css";
 import SignatureCanvas from "react-signature-canvas";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
@@ -10,13 +10,14 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
     useFormAndValidation();
 
   const [signature, setSignature] = useState("");
+  const sigCanvasRef = useRef(null);
 
   const handleSaveSignature = () => {
-    const imageData = sigCanvasRef.current.toDataURL();
-    setSignature(imageData);
+    if (sigCanvasRef.current) {
+      const imageData = sigCanvasRef.current.toDataURL();
+      setSignature(imageData);
+    }
   };
-
-  const sigCanvasRef = React.createRef();
 
   const handleClear = () => {
     sigCanvasRef.current.clear();
@@ -25,13 +26,7 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isValid) return;
-    onAddData({
-      firstName: values.firstName,
-      lastName: values.lastName,
-      signature,
-      shiftTime,
-      timeStamp,
-    });
+    handleSaveSignature();
   };
 
   useEffect(() => {
@@ -39,6 +34,18 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
       resetForm();
     }
   }, [isOpen, resetForm]);
+
+  useEffect(() => {
+    if (signature) {
+      onAddData({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        signature,
+        shiftTime,
+        timeStamp,
+      });
+    }
+  }, [signature]);
 
   return (
     <ModalWithForm
@@ -106,13 +113,6 @@ const AddNameModal = ({ shiftTime, timeStamp, isOpen, onClose, onAddData }) => {
               type="button"
             >
               Clear Signature
-            </button>
-            <button
-              className="signature__save-button"
-              onClick={handleSaveSignature}
-              type="button"
-            >
-              Save Signature
             </button>
           </div>
         </div>
