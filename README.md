@@ -10,7 +10,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 **Intro**
 
-This project elegantly demonstrates the utilization of the React framework in conjunction with Tailwind CSS. It facilitates employees in conveniently reviewing, endorsing, and officially acknowledging the Olive Garden Alcohol Services Policy. Simultaneously, managers are empowered to effortlessly receive daily and per-shift PDF summaries enumerating employees who have consented to and endorsed the policy.
+    This collaborative endeavor exemplifies the seamless integration of the React framework and Tailwind CSS to craft a sophisticated and
+    adaptable web application. Its central objective revolves around streamlining the process for employees to review, endorse, and
+    formally acknowledge the Olive Garden Alcohol Services Policy.Furthermore, managers derive significant benefits from the platform,
+    effortlessly accessing detailed summaries of employee endorsements for any given lunch or dinner shift. By prioritizing responsive
+    design principles, the application ensures a seamless user experience across various devices, optimizing viewing and
+    interaction regardless of screen size. Collaborating closely with another engineer facilitated efficient task allocation and
+    coordination, culminating in a meticulously developed and refined final product.
 
 **Techonologies**
 
